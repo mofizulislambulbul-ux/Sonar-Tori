@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> সোনার তরী- বৈশাখী মহোৎসব ২০২৬</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Galada&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root {
+            --royal-gold: #D4AF37;
+            --deep-red: #B22222;
+            --bright-orange: #FF4500;
+            --white-ivory: #FDF5E6;
+            --soft-black: #0d0d0d;
+            --boishakh-pink: #E91E63;
+            --boishakh-yellow: #FFC107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--soft-black);
+            color: var(--white-ivory);
+            overflow-x: hidden;
+        }
+
+        /* Background Image with Blur */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('Gemini_Generated_Image_mzum72mzum72mzum.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            z-index: -2;
+            transform: scale(1.1);
+        }
+
+        /* Royal Corner Flowers */
+        .flower-decoration {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .top-left { top: -50px; left: -50px; transform: rotate(0deg); }
+        .top-right { top: -50px; right: -50px; transform: rotate(90deg); }
+        .bottom-left { bottom: -50px; left: -50px; transform: rotate(-90deg); }
+        .bottom-right { bottom: -50px; right: -50px; transform: rotate(180deg); }
+
+        /* Floating Small Flowers (Extra) */
+        .floating-flower {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            z-index: 99;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .mid-left-f { top: 40%; left: -20px; filter: hue-rotate(45deg); }
+        .mid-right-f { top: 60%; right: -20px; filter: hue-rotate(-30deg); }
+
+        /* Section Corner Border Flowers */
+        .section-corner-flower {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            z-index: 10;
+        }
+        .sc-tl { top: -25px; left: -25px; }
+        .sc-br { bottom: -25px; right: -25px; transform: rotate(180deg); }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(139, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            min-height: 80px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--royal-gold);
+            padding: 10px;
+        }
+
+        .nav-logo {
+            font-family: 'Galada', cursive;
+            font-size: 2rem;
+            color: var(--royal-gold);
+        }
+
+        nav ul { display: flex; list-style: none; flex-wrap: wrap; justify-content: center; }
+        nav ul li { margin: 5px 20px; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white-ivory);
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        nav ul li a:hover { color: var(--royal-gold); }
+
+        /* Hero Section */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .logo-text {
+            font-family: 'Galada', cursive;
+            font-size: 6rem;
+            color: var(--royal-gold);
+            text-shadow: 4px 4px 20px rgba(0,0,0,1);
+            margin-bottom: 20px;
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 10%;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .section-title {
+            font-family: 'Galada', cursive;
+            font-size: 3rem;
+            color: var(--royal-gold);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* Menu Card Design - Responsive Fixed */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--royal-gold);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px);
+            background: rgba(178, 34, 34, 0.2);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid var(--royal-gold);
+            margin-bottom: 20px;
+        }
+
+        /* Announcement Section */
+        .announcement-card {
+            background: linear-gradient(135deg, #FF4500, #B22222);
+            padding: 60px 20px;
+            border-radius: 30px;
+            text-align: center;
+            border: 5px double var(--royal-gold);
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.4);
+            margin: 50px 0;
+        }
+
+        .announcement-card h2 {
+            font-family: 'Galada', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        /* Luxury Lottery Box */
+        .lottery-box {
+            background: linear-gradient(45deg, #4a0000, #8B0000, #4a0000);
+            padding: 80px 40px;
+            border-radius: 40px;
+            text-align: center;
+            border: 4px solid var(--royal-gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin: 50px 0;
+        }
+
+        .btn-lottery {
+            background: var(--royal-gold);
+            color: var(--soft-black);
+            padding: 18px 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        footer {
+            background: #000;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--royal-gold);
+        }
+
+        /* Mobile Optimization - keeping design same but fixing layout */
+        @media (max-width: 768px) {
+            .logo-text { font-size: 3.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .announcement-card h2 { font-size: 2.2rem; }
+            .flower-decoration { width: 150px; height: 150px; }
+            section { padding: 60px 5%; }
+            nav { height: auto; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <svg class="flower-decoration top-left" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="20" fill="var(--deep-red)"/>
+        <path d="M50 10 Q60 30 50 50 Q40 30 50 10" fill="var(--boishakh-yellow)"/>
+        <path d="M90 50 Q70 60 50 50 Q70 40 90 50" fill="var(--boishakh-yellow)"/>
+        <path d="M50 90 Q40 70 50 50 Q60 70 50 90" fill="var(--boishakh-yellow)"/>
+        <path d="M10 50 Q30 40 50 50 Q30 60 10 50" fill="var(--boishakh-yellow)"/>
+    </svg>
+    <svg class="flower-decoration top-right" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="20" fill="var(--bright-orange)"/>
+        <path d="M50 10 Q60 30 50 50 Q40 30 50 10" fill="var(--royal-gold)"/>
+        <path d="M90 50 Q70 60 50 50 Q70 40 90 50" fill="var(--royal-gold)"/>
+        <path d="M50 90 Q40 70 50 50 Q60 70 50 90" fill="var(--royal-gold)"/>
+        <path d="M10 50 Q30 40 50 50 Q30 60 10 50" fill="var(--royal-gold)"/>
+    </svg>
+
+    <svg class="floating-flower mid-left-f" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="var(--boishakh-pink)"/><path d="M50 10 Q60 30 50 50 Q40 30 50 10" fill="white"/></svg>
+    <svg class="floating-flower mid-right-f" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="var(--boishakh-yellow)"/><path d="M50 10 Q60 30 50 50 Q40 30 50 10" fill="var(--deep-red)"/></svg>
+
+    <nav>
+        <div class="nav-logo">সোনার তরী</div>
+        <ul>
+            <li><a href="#home">প্রচ্ছদ</a></li>
+            <li><a href="#about">আমাদের সম্পর্কে</a></li>
+            <li><a href="#menu">মেনু কার্ড</a></li>
+            <li><a href="#announcement">বিগ অফার</a></li>
+            <li><a href="#lottery">মহা-লটারি</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1 class="logo-text">সোনার তরী</h1>
+        <p style="font-size: 1.8rem; letter-spacing: 3px;">এসো হে বৈশাখ, এসো এসো...</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <svg class="section-corner-flower sc-tl" viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" fill="var(--boishakh-yellow)"/><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="var(--deep-red)"/></svg>
+            
+            <h2 class="section-title">আমাদের যাত্রা</h2>
+            <div class="tradition-content reveal">
+                <div class="tradition-text" style="text-align: center;">
+                    <p><h3>বাঙালির প্রাণের উৎসব পহেলা বৈশাখ—যা কেবল একটি দিন নয়, বরং আমাদের হাজার বছরের কৃষ্টি ও শিকড়ের মিলনমেলা। এই উৎসবের রঙে আভিজাত্য আর ঐতিহ্যের এক অপূর্ব মেলবন্ধন ঘটাতে "সোনার তরী" পরিবার নিয়ে এসেছে এক বিশেষ আয়োজন। আমরা বিশ্বাস করি, উৎসব মানেই হৃদয়ের বন্ধন আরও দৃঢ় করা এবং অনাবিল আনন্দ ভাগ করে নেওয়া। তাই আমাদের প্রতিটি পরিবেশনায় থাকে বাঙালিয়ানার শুদ্ধতম ছোঁয়া।</h3></p>
+                </div>
+            </div>
+
+            <svg class="section-corner-flower sc-br" viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" fill="var(--boishakh-pink)"/><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="white"/></svg>
+        </section>
+
+        <section id="menu">
+            <h2 class="section-title">রাজকীয় স্বাদ সম্ভার</h2>
+            <div class="menu-grid">
+                <div class="menu-item reveal">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/067/070/089/small/a-single-scoop-of-vanilla-ice-cream-melting-on-a-white-plate-on-a-light-yellow-surface-top-view-photo.jpg" alt="Vanilla">
+                    <h3>ভ্যানিলা আইসক্রিম</h3>
+                    <p>হিমশীতল স্বাদের রাজকীয় ছোঁয়া।</p>
+                </div>
+
+                <div class="menu-item reveal">
+                    <img src="https://cdn.loveandlemons.com/wp-content/uploads/2025/05/chocolate-ice-cream.jpg" alt="Chocolate">
+                    <h3>চকলেট আইসক্রিম</h3>
+                    <p>চকলেটের গভীর স্বাদে নিজেকে হারান।</p>
+                </div>
+
+                <div class="menu-item reveal">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlxfvcTnHV9dTdxz7CetaWLKo-iYdJbOoqiQ&s" alt="Strawberry">
+                    <h3>স্ট্রবেরি আইসক্রিম</h3>
+                    <p>তাজা স্ট্রবেরির সুবাসে সতেজ আভিজাত্য।</p>
+                </div>
+
+                <div class="menu-item reveal">
+                    <img src="https://i.ytimg.com/vi/iloStjLsReA/maxresdefault.jpg" alt="Raw Mango Juice">
+                    <h3>কাঁচা আমের রস</h3>
+                    <p>তপ্ত রোদে কাঁচা আমের প্রাণজুড়ানো শীতল পরশ।</p>
+                </div>
+
+                <div class="menu-item reveal">
+                    <img src="https://yellowchilis.com/wp-content/uploads/2022/07/lemon-juice.jpg" alt="Juice">
+                    <h3>তাজা ফলের রস</h3>
+                    <p>প্রকৃতির বিশুদ্ধতায় প্রাণবন্ত শরবত।</p>
+                </div>
+
+                <div class="menu-item reveal">
+                    <img src="https://cdn1.foodviva.com/static-content/food-images/snacks-recipes/pani-puri/pani-puri.jpg" alt="Pani Puri">
+                    <h3>ক্রিসপি পানিপুরি</h3>
+                    <p>টক-ঝাল-মিষ্টির এক অপূর্ব মেলবন্ধন।</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="announcement">
+             <div class="announcement-card reveal">
+                <h2>বিগ অ্যানাউন্সমেন্ট! </h2>
+                <p style="font-size: 1.6rem; color: white;">আমাদের স্টলে সরাসরি এসে "সিক্রেট গেম" খেলুন!</p>
+                <p style="font-size: 1.3rem; margin-top: 15px; background: rgba(0,0,0,0.3); display: inline-block; padding: 10px 20px; border-radius: 10px;">গেম জিতলেই থাকছে আকর্ষনীয় সব **ডিসকাউন্ট কুপন**!</p>
+             </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">কেন আমরা অনন্য?</h2>
+            <div class="menu-grid">
+                <div class="menu-item reveal">
+                    <h1 style="font-size: 3rem; color: var(--royal-gold);">০১</h1>
+                    <h3>ডিজিটাল সিস্টেম</h3>
+                    <p>কাগজের ঝামেলাহীন আধুনিক সার্ভিস।</p>
+                </div>
+                <div class="menu-item reveal">
+                    <h1 style="font-size: 3rem; color: var(--royal-gold);">০২</h1>
+                    <h3>ঐতিহ্যবাহী পরিবেশ</h3>
+                    <p>বাংলার সংস্কৃতির শতভাগ প্রতিফলন।</p>
+                </div>
+                <div class="menu-item reveal">
+                    <h1 style="font-size: 3rem; color: var(--royal-gold);">০৩</h1>
+                    <h3>টিম সোনার তরী</h3>
+                    <p>আপনাদের সেবায় নিয়োজিত একঝাঁক তরুণ।</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="lottery" class="reveal">
+            <div class="lottery-box">
+                <h2 style="font-size: 3.5rem; color: var(--royal-gold); font-family: 'Galada';">বৈশাখী মহা-লটারি ২০২৬</h2>
+                <p style="font-size: 1.3rem; margin: 20px 0;">আপনার তথ্য প্রদান করে আমাদের এই ডিজিটাল লটারিতে অংশগ্রহণ করুন। বিজয়ী পাবেন আকর্ষণীয় সব গিফট হ্যাম্পার!</p>
+                <a href="lottery.html" class="btn-lottery">এখনই অংশগ্রহণ করুন</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <h2 style="color: var(--royal-gold); font-family: 'Galada';">সোনার তরী</h2>
+        <p>বাংলার ঐতিহ্য, আমাদের গর্ব।</p>
+        <div style="margin-top: 30px; font-size: 0.8rem; color: #555;">
+            &copy; ২০২৬ সোনার তরী দল | ডিজাইন ও ডেভেলপমেন্ট বাই  AHANAF , 230481 ,CLASS 9 (SCI)
+        </div>
+    </footer>
+
+    <script>
+        ScrollReveal().reveal('.reveal', {
+            delay: 300,
+            distance: '50px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            origin: 'bottom',
+            reset: true
+        });
+
+        ScrollReveal().reveal('.logo-text', {
+            delay: 200,
+            distance: '100px',
+            origin: 'top',
+            duration: 1500
+        });
+    </script>
+
+</body>
+</html>
